@@ -89,20 +89,17 @@ void bucketSortGeneral(vector<int> &arr){
 }
 
 int main() {
-    vector<float> arr1 = {0.78, 0.17, 0.39, 0.26, 0.72,
-                         0.94, 0.21, 0.12, 0.23, 0.68};
-
+    vector<float> arr1 = {0.78, 0.17, 0.39, 0.26, 0.72, 0.94, 0.21, 0.12, 0.23, 0.68};
     bucketSortFloat(arr1);
-
     for (float num : arr1)
         cout << num << " ";
 
     cout << endl;
 
     vector<int> arr2 = {29, 25, 3, 49, 9, 37, 21, 43};
-
     bucketSortGeneral(arr2);
-
     for (int num : arr2)
         cout << num << " ";
+
+    return 0;
 }
