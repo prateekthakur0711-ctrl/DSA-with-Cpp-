@@ -147,6 +147,15 @@ void reverseLL(node* &head, node*  &tail) {
 	swap(head, tail);
 }
 
+node* reverseLLByRecursion(node* head){
+	if (head == NULL || head -> next == NULL)
+		return head;
+
+	node* newHead = reverseLLByRecursion(head -> next);
+	head -> next -> next = head;
+	head -> next = NULL;
+	return newHead;
+}
 
 int main(){
 
@@ -166,6 +175,8 @@ int main(){
 	// deleteAtEnd(head, tail);
 	// deleteAtMid(head, tail, 5);
 	reverseLL(head, tail);
+	printLL(head);
+	head = reverseLLByRecursion(head);
 	printLL(head);
 
 	return 0;
