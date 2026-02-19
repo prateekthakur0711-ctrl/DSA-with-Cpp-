@@ -30,7 +30,9 @@ void mergeSort(int *a, int s, int e)
 	// Recursive case
 	// 1. Divide
 	int m = (s + e) / 2;
-	int b[100], c[100];
+	int n1 = m - s + 1;
+	int n2 = e - m;
+	int b[n1], c[n2];
 	for (int i = s; i <= m; ++i)
 	{
 		b[i] = a[i];
