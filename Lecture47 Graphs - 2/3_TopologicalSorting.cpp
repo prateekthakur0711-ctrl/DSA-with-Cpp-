@@ -1,9 +1,8 @@
 #include <iostream>
 #include <queue>
-#include<stack>
 #include <list>
 #include <unordered_map> // unordered_map
-#include <map> // ordered_map
+#include <map> // unordered_map
 using namespace std;
 
 class Graph {
@@ -12,6 +11,7 @@ public:
 
 	void addEdge(string u, string v, bool bidir = true) {
 		adj[u].push_back(v);
+		adj[v]; 
 		if (bidir) {
 			adj[v].push_back(u);
 		}
@@ -27,7 +27,7 @@ public:
 		}
 	}
 
-	void tps_helper(string src, unordered_map<string, bool> &visited, stack <string> &ans) {
+	void tps_helper(string src, unordered_map<string, bool> &visited, list<string> &ans) {
 
 		visited[src] = true;
 
@@ -42,7 +42,7 @@ public:
 
 	void tps() {
 		unordered_map<string, bool> visited;
-		stack<string> ans;
+		list<string> ans;
 
 		for (auto p : adj) {
 			if (!visited[p.first]) {
