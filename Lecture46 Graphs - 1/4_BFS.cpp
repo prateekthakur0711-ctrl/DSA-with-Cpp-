@@ -57,7 +57,7 @@ int main() {
 	g.addEdge("A", "B");
 	g.addEdge("D", "B");
 	g.addEdge("D", "C");
-	g.addEdge("A", "C");
+	g.addEdge("A", "E");
 
 	// g.print();
 
