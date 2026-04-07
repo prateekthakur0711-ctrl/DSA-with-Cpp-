@@ -71,8 +71,46 @@ public:
 			des = parent[des];
 		}
 		cout << des << endl;
+	}
 
+	void djikstras2(string src, string des) {
+		priority_queue< pair<int, string>, vector< pair<int, string> >, greater< pair<int, string> > > pq;
+		unordered_map<string, string> parent;
+		unordered_map<string, int> dist;
 
+		for (auto p : adj) {
+			dist[p.first] = INT_MAX;
+		}
+
+		parent[src] = src;
+		dist[src] = 0;
+		pq.push({0, src});
+
+		while (!pq.empty()) {
+			auto p = pq.top();
+			pq.pop();
+
+			int cd = p.first;
+			string x = p.second;
+
+			for (auto chp : adj[x]) {
+				string neigh = chp.first;
+				int ed = chp.second;
+
+				if (dist[neigh] > cd + ed) {
+					parent[neigh] = x;
+					dist[neigh] = cd + ed;
+					pq.push({dist[neigh], neigh});
+				}
+			}
+		}
+		cout << "Distance from " << src << " to " << des << " : " << dist[des] << endl;
+		cout << "Path from " << src << " to " << des << " : ";
+		while (des != parent[des]) {
+			cout << des << "<--";
+			des = parent[des];
+		}
+		cout << des << endl;
 	}
 	
 };
@@ -87,7 +125,7 @@ int main() {
 	g.addEdge("C", "D", 3);
 	g.addEdge("C", "A", 10);
 
-	g.dijkstras("A", "C");
+	g.djikstras2("A", "C");
 
 	return 0;
 }
