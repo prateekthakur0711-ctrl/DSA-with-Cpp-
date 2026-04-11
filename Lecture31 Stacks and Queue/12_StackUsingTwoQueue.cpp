@@ -14,7 +14,7 @@ public:
 		q2.push(d);
 		cs++;
 		
-	while (!q1.empty()){
+		while (!q1.empty()){
 			q2.push(q1.front());
 			q1.pop();
 		}		

@@ -3,7 +3,7 @@ using namespace std;
 
 // Fixed merge: logical flow is easier if we use b and c as the sorted sources
 void merge(int *a, int *b, int *c, int s, int e) {
-    int m = (s + e) / 2;
+    int m = s + (e - s) / 2;
     int n1 = m - s + 1;
     int n2 = e - m;
 

@@ -43,12 +43,12 @@ node* rightRotate(node* y){
 }
 
 //RR Rotation
-node* leftRotate(node* x) {
-    node* y = x->right;
-    node* T2 = y->left;
+node* leftRotate(node* y) {
+    node* x = y->right;
+    node* z = x->left;
 
-    y->left = x;
-    x->right = T2;
+    x->left = y;
+    y->right = z;
 
     x->height = max(height(x->left), height(x->right)) + 1;
     y->height = max(height(y->left), height(y->right)) + 1;

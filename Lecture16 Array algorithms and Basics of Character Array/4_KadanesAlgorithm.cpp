@@ -2,6 +2,18 @@
 #include <climits>
 using namespace std;
 
+int kadane(int a[], int n) {
+    int maxSoFar = a[0];   
+    int currSum = a[0];
+
+    for (int i = 1; i < n; i++) {
+        currSum = max(a[i], currSum + a[i]);
+        maxSoFar = max(maxSoFar, currSum);
+    }
+
+    return maxSoFar;
+}
+
 int main (){
 
 	int a[] = {1, 2, 4, -10, 1, 3, 5, - 20, 2, 6, -3, 4, 9};

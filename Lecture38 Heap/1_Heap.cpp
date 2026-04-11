@@ -2,24 +2,38 @@
 #include <vector>
 using namespace std;
 
+// for maxheap only comparisions in heapify up and down will change from < to >
 class Minheap {
 	vector<int> v;
 
-	void heapify(int i) {
-		int mi = i;
+	void heapifyUp(int i) {
+		while (i > 1){
+			int p = i / 2;
+			if (v[p] > v[i]) {
+				swap(v[p], v[i]);
+				i = p;
+			}
+			else {
+				break;
+			}
+		}
+	}
+
+	void heapifyDown(int i) {
 		int left = 2 * i;
 		int right = 2 * i + 1;
+		int smallest = i;
 
-		if (left < v.size() and v[left] < v[mi]) {
-			mi = left;
+		if (left < v.size() and v[left] < v[smallest]) {
+			smallest = left;
 		}
-		if (right < v.size() and v[right] < v[mi]) {
-			mi = right;
+		if (right < v.size() and v[right] < v[smallest]) {
+			smallest = right;
 		}
 
-		if (i != mi) { // Base case: Because it stops the recursion calling
-			swap(v[i], v[mi]);
-			heapify(mi);
+		if (smallest != i) {
+			swap(v[i], v[smallest]);
+			heapifyDown(smallest);
 		}
 	}
 
@@ -31,21 +45,14 @@ public:
 
 	void push(int d) {
 		v.push_back(d);
-		int c = v.size() - 1;
-		int p = c / 2;
-
-		while (p > 0 and v[p] > v[c]) { // O(logN) -> We iterate only on the height of tree
-			swap(v[p], v[c]);
-			c = p; // or c = c/2;
-			p /= 2;
-		}
+		heapifyUp(v.size() - 1);
 	}
 
 	void pop() {
 		swap(v[1], v[v.size() - 1]);
 		v.pop_back();
 
-		heapify(1);
+		heapifyDown(1);
 	}
 
 	int top() {

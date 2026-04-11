@@ -47,14 +47,12 @@ node* mergeSortedLL(node* a, node* b) {
 	if (b == NULL) return a;
 
 	if (a->data <= b->data) {
-		node* nH = a;
-		nH->next = mergeSortedLL(a->next, b);
-		return nH;
+		a->next = mergeSortedLL(a->next, b);
+		return a;
 	}
 	else {
-		node* nH = b;
-		nH->next = mergeSortedLL(a, b->next);
-		return nH;
+		b->next = mergeSortedLL(a, b->next);
+		return b;
 	}
 }
 

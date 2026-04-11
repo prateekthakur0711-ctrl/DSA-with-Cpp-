@@ -40,7 +40,7 @@ void insertAtEnd(node* &h, node* &t, int d){
 	}
 }
 
-int lenthLL(node* h){
+int lengthLL(node* h){
 	int cnt = 0;
 	while (h != NULL)
 	{
@@ -55,7 +55,7 @@ void insertAtMid(node* &h, node* &t, int d, int pos){
 	{
 		insertAtFront(h, t, d);
 	}
-	else if (pos >= lenthLL(h)){
+	else if (pos >= lengthLL(h)){
 		insertAtEnd(h, t, d);
 	}
 	else{
@@ -117,10 +117,10 @@ void deleteAtMid(node* &head, node* &tail, int pos){
 	if (pos == 0){
 		deleteAtFront(head, tail);
 	}
-	else if(pos == lenthLL(head) - 1){
+	else if(pos == lengthLL(head) - 1){
 		deleteAtEnd(head, tail);
 	}
-	else if (pos >= lenthLL(head)){
+	else if (pos >= lengthLL(head)){
 		return;
 	}
 	else{
